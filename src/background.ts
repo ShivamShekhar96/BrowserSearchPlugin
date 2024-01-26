@@ -1,5 +1,3 @@
-import axios from "axios";
-
 type BrowserSearchAPI = {
     url: string;
     user_id?: number
@@ -8,7 +6,13 @@ type BrowserSearchAPI = {
 const sendToDB = async (payload: BrowserSearchAPI) => {
     payload['user_id'] = 4
     try {
-        const response = await axios.post("https://browser-search-api.onrender.com/api/v1/searches", payload)
+        const response = await fetch("https://browser-search-api.onrender.com/api/v1/searches", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+        })
     } catch (error) {
         console.log(error)
     }
