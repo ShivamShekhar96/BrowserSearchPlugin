@@ -3,7 +3,7 @@
   "description": "This extension records urls visited by us",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["webNavigation", "identity", "identity.email", "storage"],
+  "permissions": ["webNavigation", "identity", "identity.email"],
   "action": {
     "default_popup": "popup.html"
   },
