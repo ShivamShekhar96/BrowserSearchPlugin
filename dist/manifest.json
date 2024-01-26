@@ -13,6 +13,6 @@
   "key": "YUa9BDzWdAytVqdK8sJUKpCchnoLOKvF",
   "oauth2": {
     "client_id": "446120217053-l7b9ffocf679vbifmsivvpe9bbfpfsv7.apps.googleusercontent.com",
-    "scopes": [""]
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
   }
 }
