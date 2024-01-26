@@ -1,12 +1,18 @@
 {
-    "name": "Browser Search Extension",
-    "description": "This extension records urls visited by us",
-    "version": "1.0",
-    "manifest_version": 3,
-    "permissions": [
-        "webNavigation"
-    ],
-    "background": {
-        "service_worker": "background.js"
-    }
+  "name": "Browser Search Extension",
+  "description": "This extension records urls visited by us",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["webNavigation", "identity", "identity.email"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "key": "YUa9BDzWdAytVqdK8sJUKpCchnoLOKvF",
+  "oauth2": {
+    "client_id": "446120217053-l7b9ffocf679vbifmsivvpe9bbfpfsv7.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
+  }
 }

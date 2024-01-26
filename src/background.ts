@@ -1,21 +1,31 @@
-import axios from "axios";
-
 type BrowserSearchAPI = {
-    url: string;
-    user_id?: number
-}
+  url: string;
+};
 
-const sendToDB = async (payload: BrowserSearchAPI) => {
-    payload['user_id'] = 4
+const saveSearch = (payload: BrowserSearchAPI) => {
+  chrome.identity.getAuthToken({ interactive: true }, async (token) => {
     try {
-        const response = await axios.post("https://browser-search-api.onrender.com/api/v1/searches", payload)
-    } catch (error) {
-        console.log(error)
-    }
-}
+      const requestHeaders: HeadersInit | { "X-Auth-Key": string } =
+        new Headers();
+      requestHeaders.set("Content-Type", "application/json");
+      requestHeaders.set("X-Auth-Key", token || "");
 
-chrome.webNavigation.onCompleted.addListener(async (details) => {
-    await sendToDB({
-        url: details.url
-    })
+      const response = await fetch(
+        "https://browser-search-api.onrender.com/api/v1/searches",
+        {
+          method: "POST",
+          headers: requestHeaders,
+          body: JSON.stringify(payload),
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  });
+};
+
+chrome.webNavigation.onCompleted.addListener((details) => {
+  saveSearch({
+    url: details.url,
+  });
 });
