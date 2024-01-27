@@ -25,8 +25,9 @@ const saveSearch = (payload: BrowserSearchAPI) => {
 };
 
 chrome.webNavigation.onCompleted.addListener((details) => {
-  // TODO: send url host only. ensure host is a website.
-  saveSearch({
-    url: details.url,
-  });
+  // TODO: send url host only
+  if (details.frameId == 0)
+    saveSearch({
+      url: details.url,
+    });
 });
