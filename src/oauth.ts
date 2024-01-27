@@ -18,6 +18,7 @@ document.getElementById("login")?.addEventListener("click", () => {
           }
         );
         chrome.action.setPopup({ popup: "popup_signed_in.html" });
+        window.close();
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +45,7 @@ document.getElementById("logout")?.addEventListener("click", () => {
             }
           );
           chrome.action.setPopup({ popup: "popup.html" });
+          window.close();
         } catch (error) {
           console.log(error);
         }
