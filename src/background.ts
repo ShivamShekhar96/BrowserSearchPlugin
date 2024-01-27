@@ -5,10 +5,10 @@ type BrowserSearchAPI = {
 const saveSearch = (payload: BrowserSearchAPI) => {
   chrome.identity.getAuthToken({ interactive: true }, async (token) => {
     try {
-      const requestHeaders: HeadersInit | { "X-Auth-Key": string } =
+      const requestHeaders: HeadersInit | { "x-auth-key": string } =
         new Headers();
       requestHeaders.set("Content-Type", "application/json");
-      requestHeaders.set("X-Auth-Key", token || "");
+      requestHeaders.set("x-auth-key", token || "");
 
       const response = await fetch(
         "https://browser-search-api.onrender.com/api/v1/searches",

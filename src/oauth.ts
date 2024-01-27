@@ -5,7 +5,7 @@ document.getElementById("login")?.addEventListener("click", () => {
         const payload = {
           email: userInfo.email,
         };
-        const requestHeaders: HeadersInit | { "X-Auth-Key": string } =
+        const requestHeaders: HeadersInit | { "x-auth-key": string } =
           new Headers();
         requestHeaders.set("Content-Type", "application/json");
         requestHeaders.set("X-Auth-Key", token || "");
@@ -32,7 +32,7 @@ document.getElementById("logout")?.addEventListener("click", () => {
       { token: current_token },
       async () => {
         try {
-          const requestHeaders: HeadersInit | { "X-Auth-Key": string } =
+          const requestHeaders: HeadersInit | { "x-auth-key": string } =
             new Headers();
           requestHeaders.set("Content-Type", "application/json");
           requestHeaders.set("X-Auth-Key", current_token);
